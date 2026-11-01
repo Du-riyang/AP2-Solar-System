@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP2 - 3D Solar System</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js 模块映射，解决 OrbitControls 引用问题 -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="app">
+
+        <header>
+            <div>
+                <h1>☀️ SOLAR SYSTEM</h1>
+                <p>Three-Dimensional Hierarchical Scene</p>
+            </div>
+            <div class="status">WEBGL 3D EXPERIENCE</div>
+        </header>
+
+        <main>
+
+            <section id="scene-container">
+                <div class="hint">
+                    拖动旋转视角 · 滚轮缩放 · O 切换投影 · 空格暂停
+                </div>
+
+                <div id="loading">正在加载太阳系...</div>
+            </section>
+
+            <aside class="panel">
+
+                <h2>CONTROL PANEL</h2>
+
+                <div class="control">
+                    <label>公转速度 <span id="orbitValue">1.0</span></label>
+                    <input id="orbitSpeed" type="range" min="0" max="3" step="0.1" value="1">
+                </div>
+
+                <div class="control">
+                    <label>自转速度 <span id="rotationValue">1.0</span></label>
+                    <input id="rotationSpeed" type="range" min="0" max="3" step="0.1" value="1">
+                </div>
+
+                <div class="control">
+                    <label>地球轴倾角 <span id="tiltValue">23.5°</span></label>
+                    <input id="tiltAngle" type="range" min="0" max="45" step="0.5" value="23.5">
+                </div>
+
+                <div class="control">
+                    <label>月球公转速度 <span id="moonValue">1.0</span></label>
+                    <input id="moonSpeed" type="range" min="0" max="4" step="0.1" value="1">
+                </div>
+
+                <div class="control checkbox">
+                    <label for="showOrbits">显示轨道线</label>
+                    <input id="showOrbits" type="checkbox" checked>
+                </div>
+
+                <div class="buttons">
+                    <button id="pauseBtn">暂停动画</button>
+                    <button id="cameraBtn">开始相机漫游</button>
+                    <button id="projectionBtn">切换投影（O）</button>
+                    <button id="resetBtn">重置视角</button>
+                </div>
+
+                <div class="info">
+                    <h3>天体信息</h3>
+                    <p>☀️ 太阳：Solar</p>
+                    <p>🌍 地球：Earth</p>
+                    <p>🌙 月球：Moon</p>
+                    <p id="projectionInfo">当前投影：透视投影</p>
+                    <p id="animationInfo">动画状态：运行中</p>
+                </div>
+
+            </aside>
+
+        </main>
+
+        <footer>
+            AP2 · Interactive Computer Graphics · Three.js
+        </footer>
+
+    </div>
+
+    <!-- 加载主程序 -->
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>
